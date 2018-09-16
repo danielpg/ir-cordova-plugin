@@ -44,8 +44,9 @@ public class Ir extends CordovaPlugin {
                 final Context context = this.cordova.getActivity().getApplicationContext();
                 this.cordova.getThreadPool().execute(new Runnable() {
                     public void run() {
+                    	
                       	callbackContext.success("aja");
-                    	return true;
+
                     	
                         //ConsumerIrManager irService = (ConsumerIrManager)context.getSystemService(context.CONSUMER_IR_SERVICE);
 
