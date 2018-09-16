@@ -18,10 +18,13 @@ import java.lang.Exception;
 import java.lang.Integer;
 import java.lang.Runnable;
 
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
+
 public class Ir extends CordovaPlugin {
     public static final String ACTION_TRANSMIT_IR_CODE = "transmit";
     Object irdaService;
-    Method irWrite;
+    //Method irWrite;
     ConsumerIrManager irService;
     
     @Override
@@ -51,8 +54,9 @@ public class Ir extends CordovaPlugin {
                        //ConsumerIrManager irService = (ConsumerIrManager)context.getSystemService(context.CONSUMER_IR_SERVICE);
                        //ConsumerIrManager irService = (ConsumerIrManager)getSystemService(context.CONSUMER_IR_SERVICE);
 
-                       irdaService = this.getSystemService("irda");
+                      // irdaService = this.getSystemService("irda");
                        
+                       irInit4JellyBean();
                        
                       	callbackContext.success("aja");
 
@@ -82,16 +86,28 @@ public class Ir extends CordovaPlugin {
             }
             return true;
 
-        } catch (
-                Exception e
-                )
-
-        {
+        } catch ( Exception e  ){
             callbackContext.error("java ".concat(e.getMessage()));
             return false;
         }
 
     }
+    
+    
+    public void irInit4JellyBean() {
+    	  irdaService = this.getSystemService("irda");
+    	/*  Class c = irdaService.getClass();
+    	  Class p[] = { String.class };
+    	  try {
+    	   irWrite = c.getMethod("write_irsend", p);
+    	  } catch (NoSuchMethodException e) {
+    	   e.printStackTrace();
+    	  }*/
+    }
+
+    
+    
+    
 }
 
 
