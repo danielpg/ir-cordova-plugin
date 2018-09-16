@@ -20,6 +20,9 @@ import java.lang.Runnable;
 
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 public class Ir extends CordovaPlugin {
     public static final String ACTION_TRANSMIT_IR_CODE = "transmit";
