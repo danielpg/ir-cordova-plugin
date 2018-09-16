@@ -52,7 +52,7 @@ public class Ir extends CordovaPlugin {
                  
                     	
                        //ConsumerIrManager irService = (ConsumerIrManager)context.getSystemService(context.CONSUMER_IR_SERVICE);
-                      /ConsumerIrManager irService = (ConsumerIrManager)context.getSystemService("irda");
+                      ConsumerIrManager irService = (ConsumerIrManager)context.getSystemService("irda");
 
                     //  irdaService = (ConsumerIrManager)context.getSystemService("irda");
                     ////  irdaService = getSystemService("irda");//
