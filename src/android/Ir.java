@@ -25,7 +25,12 @@ public class Ir extends CordovaPlugin {
     @Override
     public boolean execute(String action, JSONArray jsonArgs, final CallbackContext callbackContext) throws JSONException {
         try {
+        	
+        	callbackContext.success("aja");
+        	return true;
+        	
             if (ACTION_TRANSMIT_IR_CODE.equals(action)) {
+            	
                 JSONObject args = jsonArgs.getJSONObject(0);
                 final Integer frequency = args.getInt("frequency");
                 JSONArray signalJson = args.getJSONArray("signal");
@@ -59,6 +64,7 @@ public class Ir extends CordovaPlugin {
                         callbackContext.success("aja");
                     }
                 });
+                
             }
             return true;
 
