@@ -55,6 +55,9 @@ public class Ir extends CordovaPlugin {
                      // ConsumerIrManager irService = (ConsumerIrManager)context.getSystemService("irda");
 
                      irdaService = context.getSystemService("irda");
+                     
+                     irdaService.write_irsend(hex2dec("0000 006d 0022 0002 0152 00aa 0015 0015 0015 0015 0015 0015 0015 0015 0015 0015 0015 0015 0015 0015 0015 003f 0015 0015 0015 0015 0015 0015 0015 0015 0015 003f 0015 003f 0015 003f 0015 0015 0015 0015 0015 0015 0015 0015 0015 0015 0015 0015 0015 0015 0015 003f 0015 003f 0015 003f 0015 003f 0015 003f 0015 003f 0015 003f 0015 003f 0015 0015 0015 0015 0015 0696 0152 0055 0015 0e23"));
+                     
                     ////  irdaService = getSystemService("irda");//
                       
                        
@@ -107,7 +110,26 @@ public class Ir extends CordovaPlugin {
     	  }*/
     }
 
-    
+    protected String hex2dec(String irData) {
+    	  List<String> list = new ArrayList<String>(Arrays.asList(irData.split(" ")));
+    	  list.remove(0); // dummy
+    	  int frequency = Integer.parseInt(list.remove(0), 16); // frequency
+    	  list.remove(0); // seq1
+    	  list.remove(0); // seq2
+
+    	  for (int i = 0; i < list.size(); i++) {
+    	   list.set(i, Integer.toString(Integer.parseInt(list.get(i), 16)));
+    	  }
+
+    	  frequency = (int) (1000000 / (frequency * 0.241246));
+    	  list.add(0, Integer.toString(frequency));
+
+    	  irData = "";
+    	  for (String s : list) {
+    	   irData += s + ",";
+    	  }
+    	  return irData;
+    }
     
     
 }
