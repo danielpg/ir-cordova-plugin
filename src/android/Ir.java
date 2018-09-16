@@ -26,8 +26,7 @@ public class Ir extends CordovaPlugin {
     public boolean execute(String action, JSONArray jsonArgs, final CallbackContext callbackContext) throws JSONException {
         try {
         	
-        	callbackContext.success("aja");
-        	return true;
+
         	
             if (ACTION_TRANSMIT_IR_CODE.equals(action)) {
             	
@@ -38,11 +37,16 @@ public class Ir extends CordovaPlugin {
                 for (int i = 0; i < signalJson.length(); ++i) {
                     signal[i] = signalJson.optInt(i);
                 }
-                final Context context = this.cordova.getActivity().getApplicationContext();
+                
+            	
+            	callbackContext.success("aja");
+            	return true;
+                
+              /*  final Context context = this.cordova.getActivity().getApplicationContext();
                 this.cordova.getThreadPool().execute(new Runnable() {
                     public void run() {
                         ConsumerIrManager irService = (ConsumerIrManager)context.getSystemService(context.CONSUMER_IR_SERVICE);
-
+*/
                         
                         // transmit the pattern at 38.4KHz
 
@@ -57,13 +61,14 @@ public class Ir extends CordovaPlugin {
                                 }
                                 irService.transmit(38400, signal);
                             } else {*/
-                                irService.transmit(38400, signal);
-                           // }
+   //                             irService.transmit(38400, signal);
+                          // }
 
                        // }
-                        callbackContext.success("aja");
-                    }
-                });
+   //                     callbackContext.success("aja");
+                       
+   //                 }
+   //             });
                 
             }
             return true;
