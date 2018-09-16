@@ -39,15 +39,18 @@ public class Ir extends CordovaPlugin {
                 }
                 
             	
-            	callbackContext.success("aja");
-            	return true;
+  
                 
-              /*  final Context context = this.cordova.getActivity().getApplicationContext();
+                final Context context = this.cordova.getActivity().getApplicationContext();
                 this.cordova.getThreadPool().execute(new Runnable() {
                     public void run() {
-                        ConsumerIrManager irService = (ConsumerIrManager)context.getSystemService(context.CONSUMER_IR_SERVICE);
-*/
-                        
+                      	callbackContext.success("aja");
+                    	return true;
+                    	
+                        //ConsumerIrManager irService = (ConsumerIrManager)context.getSystemService(context.CONSUMER_IR_SERVICE);
+
+    
+                    	
                         // transmit the pattern at 38.4KHz
 
                         //if (android.os.Build.VERSION.SDK_INT == 19) {
@@ -67,8 +70,8 @@ public class Ir extends CordovaPlugin {
                        // }
    //                     callbackContext.success("aja");
                        
-   //                 }
-   //             });
+                    }
+                 });
                 
             }
             return true;
