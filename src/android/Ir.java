@@ -52,11 +52,13 @@ public class Ir extends CordovaPlugin {
                  
                     	
                        //ConsumerIrManager irService = (ConsumerIrManager)context.getSystemService(context.CONSUMER_IR_SERVICE);
-                       //ConsumerIrManager irService = (ConsumerIrManager)getSystemService(context.CONSUMER_IR_SERVICE);
+                      /ConsumerIrManager irService = (ConsumerIrManager)context.getSystemService("irda");
 
-                      // irdaService = this.getSystemService("irda");
+                    //  irdaService = (ConsumerIrManager)context.getSystemService("irda");
+                    ////  irdaService = getSystemService("irda");//
+                      
                        
-                       irInit4JellyBean();
+                      // irInit4JellyBean();
                        
                       	callbackContext.success("aja");
 
@@ -95,7 +97,7 @@ public class Ir extends CordovaPlugin {
     
     
     public void irInit4JellyBean() {
-    	  irdaService = this.getSystemService("irda");
+    	 // irdaService = this.getSystemService("irda");
     	/*  Class c = irdaService.getClass();
     	  Class p[] = { String.class };
     	  try {
