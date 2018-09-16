@@ -40,11 +40,14 @@ public class Ir extends CordovaPlugin {
             	
                 JSONObject args = jsonArgs.getJSONObject(0);
                 final Integer frequency = args.getInt("frequency");
+                String signal = args.getString("signal");
+                
+                /*
                 JSONArray signalJson = args.getJSONArray("signal");
                 final int[] signal = new int[signalJson.length()];
                 for (int i = 0; i < signalJson.length(); ++i) {
                     signal[i] = signalJson.optInt(i);
-                }
+                }*/
                 
             	
   
@@ -52,38 +55,29 @@ public class Ir extends CordovaPlugin {
                 final Context context = this.cordova.getActivity().getApplicationContext();
                 this.cordova.getThreadPool().execute(new Runnable() {
                     public void run() {
-                 
-                    	
-                       //ConsumerIrManager irService = (ConsumerIrManager)context.getSystemService(context.CONSUMER_IR_SERVICE);
-                     // ConsumerIrManager irService = (ConsumerIrManager)context.getSystemService("irda");
-
-                    irdaService = context.getSystemService("irda");
                      
-                    Class c = irdaService.getClass();
-             		/*Class p[] = { String.class };
-             		irWrite = c.getMethod("write_irsend", p);
-             		irWrite.invoke(irdaService, data);*/
-                    
-                    try{
-                    
-                    c.getMethod("write_irsend").invoke(irdaService, hex2dec("0000 006d 0022 0002 0152 00aa 0015 0015 0015 0015 0015 0015 0015 0015 0015 0015 0015 0015 0015 0015 0015 003f 0015 0015 0015 0015 0015 0015 0015 0015 0015 003f 0015 003f 0015 003f 0015 0015 0015 0015 0015 0015 0015 0015 0015 0015 0015 0015 0015 0015 0015 003f 0015 003f 0015 003f 0015 003f 0015 003f 0015 003f 0015 003f 0015 003f 0015 0015 0015 0015 0015 0696 0152 0055 0015 0e23"));
-                    // irdaService.write_irsend(hex2dec("0000 006d 0022 0002 0152 00aa 0015 0015 0015 0015 0015 0015 0015 0015 0015 0015 0015 0015 0015 0015 0015 003f 0015 0015 0015 0015 0015 0015 0015 0015 0015 003f 0015 003f 0015 003f 0015 0015 0015 0015 0015 0015 0015 0015 0015 0015 0015 0015 0015 0015 0015 003f 0015 003f 0015 003f 0015 003f 0015 003f 0015 003f 0015 003f 0015 003f 0015 0015 0015 0015 0015 0696 0152 0055 0015 0e23"));
-                    } catch (NoSuchMethodException e) {
-            			e.printStackTrace();
-                    } catch (IllegalArgumentException e) {
-        				e.printStackTrace();
-        			} catch (IllegalAccessException e) {
-        				e.printStackTrace();
-        			} catch (InvocationTargetException e) {
-        				e.printStackTrace();
-        }
-                    
-                     
-                    ////  irdaService = getSystemService("irda");//
-                      
-                       
-                      // irInit4JellyBean();
-                       
+	                    //ConsumerIrManager irService = (ConsumerIrManager)context.getSystemService(context.CONSUMER_IR_SERVICE);
+	                    irdaService = context.getSystemService("irda");
+	                    Class c = irdaService.getClass();
+	                    
+	                    try{
+	                    
+	                    	//c.getMethod("write_irsend").invoke(irdaService, hex2dec("0000 006d 0022 0002 0152 00aa 0015 0015 0015 0015 0015 0015 0015 0015 0015 0015 0015 0015 0015 0015 0015 003f 0015 0015 0015 0015 0015 0015 0015 0015 0015 003f 0015 003f 0015 003f 0015 0015 0015 0015 0015 0015 0015 0015 0015 0015 0015 0015 0015 0015 0015 003f 0015 003f 0015 003f 0015 003f 0015 003f 0015 003f 0015 003f 0015 003f 0015 0015 0015 0015 0015 0696 0152 0055 0015 0e23"));
+	                    	
+	                    	c.getMethod("write_irsend").invoke(irdaService,hex2dec(signal) );
+	                    	
+	                    	
+	                    } catch (NoSuchMethodException e) {
+	            			e.printStackTrace();
+	                    } catch (IllegalArgumentException e) {
+	        				e.printStackTrace();
+	        			} catch (IllegalAccessException e) {
+	        				e.printStackTrace();
+	        			} catch (InvocationTargetException e) {
+	        				e.printStackTrace();
+	        			}
+	                    
+                          
                       	callbackContext.success("aja");
 
                     	
@@ -117,18 +111,6 @@ public class Ir extends CordovaPlugin {
             return false;
         }
 
-    }
-    
-    
-    public void irInit4JellyBean() {
-    	 // irdaService = this.getSystemService("irda");
-    	/*  Class c = irdaService.getClass();
-    	  Class p[] = { String.class };
-    	  try {
-    	   irWrite = c.getMethod("write_irsend", p);
-    	  } catch (NoSuchMethodException e) {
-    	   e.printStackTrace();
-    	  }*/
     }
 
     protected String hex2dec(String irData) {
