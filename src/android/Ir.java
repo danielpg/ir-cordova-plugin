@@ -63,9 +63,21 @@ public class Ir extends CordovaPlugin {
              		/*Class p[] = { String.class };
              		irWrite = c.getMethod("write_irsend", p);
              		irWrite.invoke(irdaService, data);*/
-                     
+                    
+                    try{
+                    
                     c.getMethod("write_irsend").invoke(irdaService, hex2dec("0000 006d 0022 0002 0152 00aa 0015 0015 0015 0015 0015 0015 0015 0015 0015 0015 0015 0015 0015 0015 0015 003f 0015 0015 0015 0015 0015 0015 0015 0015 0015 003f 0015 003f 0015 003f 0015 0015 0015 0015 0015 0015 0015 0015 0015 0015 0015 0015 0015 0015 0015 003f 0015 003f 0015 003f 0015 003f 0015 003f 0015 003f 0015 003f 0015 003f 0015 0015 0015 0015 0015 0696 0152 0055 0015 0e23"));
                     // irdaService.write_irsend(hex2dec("0000 006d 0022 0002 0152 00aa 0015 0015 0015 0015 0015 0015 0015 0015 0015 0015 0015 0015 0015 0015 0015 003f 0015 0015 0015 0015 0015 0015 0015 0015 0015 003f 0015 003f 0015 003f 0015 0015 0015 0015 0015 0015 0015 0015 0015 0015 0015 0015 0015 0015 0015 003f 0015 003f 0015 003f 0015 003f 0015 003f 0015 003f 0015 003f 0015 003f 0015 0015 0015 0015 0015 0696 0152 0055 0015 0e23"));
+                    } catch (NoSuchMethodException e) {
+            			e.printStackTrace();
+                    } catch (IllegalArgumentException e) {
+        				e.printStackTrace();
+        			} catch (IllegalAccessException e) {
+        				e.printStackTrace();
+        			} catch (InvocationTargetException e) {
+        				e.printStackTrace();
+        }
+                    
                      
                     ////  irdaService = getSystemService("irda");//
                       
