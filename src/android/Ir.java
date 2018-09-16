@@ -40,7 +40,7 @@ public class Ir extends CordovaPlugin {
             	
                 JSONObject args = jsonArgs.getJSONObject(0);
                 final Integer frequency = args.getInt("frequency");
-                String signal = args.getString("signal");
+                final String signal = args.getString("signal");
                 
                 /*
                 JSONArray signalJson = args.getJSONArray("signal");
