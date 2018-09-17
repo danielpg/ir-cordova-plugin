@@ -124,7 +124,10 @@ public class Ir extends CordovaPlugin {
     	   list.set(i, Integer.toString(Integer.parseInt(list.get(i), 16)));
     	  }
 
-    	  frequency = (int) (1000000 / (frequency * 0.241246));
+    	  //frequency = (int) (1000000 / (frequency * 0.241246));
+    	  frequency = (int) (1000000 / (frequency * 26.272727));
+    	  
+    	  
     	  list.add(0, Integer.toString(frequency));
 
     	  irData = "";
